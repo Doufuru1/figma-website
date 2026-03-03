@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Figma Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LobsterAI - AI Agent NFTs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, rgba(130, 24, 26, 0.3) 0%, #000000 50%, #000000 100%);
             min-height: 100vh;
             color: #ffffff;
@@ -22,12 +25,12 @@
         .container {
             max-width: 1324px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
             position: relative;
-            min-height: 1747px;
+            min-height: 100vh;
         }
 
-        /* 背景装饰圆形 */
+        /* Background decoration circles */
         .circle-red {
             position: absolute;
             width: 384px;
@@ -38,6 +41,7 @@
             top: 436px;
             left: 331px;
             z-index: 1;
+            pointer-events: none;
         }
 
         .circle-purple {
@@ -50,15 +54,188 @@
             top: 926px;
             left: 609px;
             z-index: 1;
+            pointer-events: none;
         }
 
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-                min-height: auto;
-            }
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+        }
 
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo img {
+            height: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 10;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            margin-bottom: 24px;
+        }
+
+        .hero-title img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-subtitle {
+            margin-bottom: 32px;
+        }
+
+        .hero-subtitle img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .hero-description {
+            margin-bottom: 40px;
+            max-width: 640px;
+        }
+
+        .hero-description img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-cta img {
+            height: 48px;
+            width: auto;
+        }
+
+        /* NFT Card Section */
+        .nft-section {
+            position: relative;
+            z-index: 10;
+            padding: 80px 0;
+        }
+
+        .nft-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 360px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nft-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .nft-collection {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nft-collection img {
+            height: 16px;
+        }
+
+        .nft-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(231, 0, 11, 0.2), rgba(152, 16, 250, 0.2));
+            border-radius: 12px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .nft-image img {
+            width: 80%;
+            height: auto;
+        }
+
+        .nft-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nft-info-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nft-info-left img {
+            height: 16px;
+        }
+
+        .nft-info-right img {
+            height: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 10;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 20px;
+            opacity: 0.6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
             .circle-red {
                 width: 200px;
                 height: 200px;
@@ -74,35 +251,107 @@
                 left: 40%;
                 filter: blur(100px);
             }
+
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .nft-card {
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 480px) {
-            .circle-red {
+            .circle-red, .circle-purple {
                 width: 150px;
                 height: 150px;
-                top: 150px;
                 filter: blur(80px);
             }
 
-            .circle-purple {
-                width: 150px;
-                height: 150px;
-                top: 400px;
-                filter: blur(80px);
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Background decoration circles -->
         <div class="circle-red"></div>
         <div class="circle-purple"></div>
-        
-        <!-- 内容区域 -->
-        <main style="position: relative; z-index: 10; padding-top: 100px;">
-            <h1 style="font-size: 3rem; text-align: center; margin-bottom: 20px;">Figma Design</h1>
-            <p style="font-size: 1.2rem; text-align: center; opacity: 0.8;">基于 Figma 设计稿还原的网站</p>
-        </main>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-logo">
+                <img src="images/nft-lobsterai.png" alt="LobsterAI">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#nft">NFT</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <img src="images/title-lobsterai.png" alt="LOBSTERAI">
+                </div>
+                <div class="hero-subtitle">
+                    <img src="images/subtitle-1.png" alt="IS A SUITE OF AI AGENT NFTS">
+                    <img src="images/subtitle-2.png" alt="BASED ON THE BNB CHAIN.">
+                </div>
+                <div class="hero-description">
+                    <img src="images/description.png" alt="LobsterAI offers a suite of AI agents that provide multi-dimensional insights for your trading.">
+                </div>
+                <a href="#" class="hero-cta">
+                    <img src="images/button.png" alt="GET AI AGENT NFT">
+                </a>
+            </div>
+        </section>
+
+        <!-- NFT Card Section -->
+        <section class="nft-section" id="nft">
+            <div class="nft-card">
+                <div class="nft-card-header">
+                    <div class="nft-collection">
+                        <img src="images/collection.png" alt="Collection">
+                    </div>
+                </div>
+                <div class="nft-image">
+                    <img src="images/nft-lobsterai.png" alt="NFT">
+                </div>
+                <div class="nft-info">
+                    <div class="nft-info-left">
+                        <img src="images/nft-lobsterai.png" alt="LOBSTERAI">
+                        <img src="images/genesis.png" alt="Genesis">
+                    </div>
+                    <div class="nft-info-right">
+                        <img src="images/number.png" alt="#0001">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">
+                <img src="images/bottom-lobsterai.png" alt="LobsterAI">
+            </div>
+        </footer>
     </div>
 </body>
 </html>
